@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeleno Srce na Klik</title>
+    <style>
+        /* Stil za telo stranice */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #f0f8ff;
+            overflow: hidden; /* Sprečava da se pojavi scrollbar */
+        }
+
+        /* Stil za srce */
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: green;
+            animation: float 2s ease-in-out infinite; /* Animacija plutanja */
+        }
+
+        /* Animacija plutanja srca */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <script>
+        // Funkcija koja se poziva kada se klikne na stranicu
+        document.body.addEventListener("click", function(event) {
+            // Kreira novo srce
+            var heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💚"; // Unicode srce emoji
+
+            // Postavlja poziciju srca na mesto klika
+            heart.style.left = event.pageX - 15 + "px"; // Pozicija X (da centriramo srce)
+            heart.style.top = event.pageY - 15 + "px"; // Pozicija Y (da centriramo srce)
+
+            // Dodaje srce na stranicu
+            document.body.appendChild(heart);
+
+            // Nakon što je srce dodato, automatski uklanja srce nakon 2 sekunde
+            setTimeout(function() {
+                heart.remove();
+            }, 2000); // Srce nestaje nakon 2 sekunde
+        });
+    </script>
+
+</body>
+</html>
